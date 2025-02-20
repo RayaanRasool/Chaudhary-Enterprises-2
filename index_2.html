@@ -15,7 +15,27 @@
             margin: 0;
             padding: 20px;
             height: 100vh;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in-out forwards;
         }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container, .slider-container {
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in-out forwards;
+            animation-delay: 0.5s;
+        }
+
         .container {
             background: rgba(0, 0, 0, 0.6);
             padding: 20px;
@@ -25,10 +45,12 @@
             margin: auto;
             backdrop-filter: blur(10px);
         }
+
         h1 {
             color: #00FFC6;
             font-size: 36px;
         }
+
         .slider-container {
             position: relative;
             max-width: 600px;
@@ -37,21 +59,31 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            transition: opacity 1s ease-in-out;
         }
+
         .slider img, a img {
             width: 100%;
             height: auto;
             border-radius: 10px;
-            transition: transform 0.5s ease-in-out;
+            transition: transform 0.5s ease-in-out, opacity 1s ease-in-out;
         }
+
         .slider img:hover, a img:hover {
-            transform: scale(1.2);
+            transform: scale(1.1);
         }
+
         .nav-buttons {
             display: flex;
             justify-content: center;
             margin-top: 15px;
         }
+      a img {
+    width: 60px;
+    height: 60px;
+}
+
+
         .nav-buttons button {
             background: linear-gradient(to right, #FF416C, #FF4B2B);
             color: white;
@@ -62,15 +94,12 @@
             cursor: pointer;
             border-radius: 25px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            transition: 0.3s;
+            transition: transform 0.3s ease-in-out;
         }
+
         .nav-buttons button:hover {
             background: linear-gradient(to right, #FF4B2B, #FF416C);
-            transform: scale(1.1);
-        }
-        a img {
-            width: 20px;
-            height: 20px;
+            transform: scale(1.2);
         }
     </style>
 </head>
@@ -81,7 +110,7 @@
         <br>
         <a href="https://whatsapp.com/channel/0029VaTbzQ0GpLHXAs51zO3f" target="_blank">
             <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp">
-            
+          
         </a>
     </div>
 
@@ -128,9 +157,14 @@
             let imgElement = document.getElementById(imgId);
             let currentIndex = imgArray.indexOf(imgElement.src);
             let newIndex = direction === 'next' ? (currentIndex + 1) % imgArray.length : (currentIndex - 1 + imgArray.length) % imgArray.length;
-            imgElement.src = imgArray[newIndex];
+            
+            imgElement.style.opacity = "0";  
+            setTimeout(() => {
+                imgElement.src = imgArray[newIndex];
+                imgElement.style.opacity = "1";
+            }, 500);
         }
-        
+
         document.getElementById('slide').src = projectImages[0];
         document.getElementById('gallery-slide').src = galleryImages[0];
     </script>

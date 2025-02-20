@@ -14,55 +14,70 @@
             color: #fff;
             display: flex;
             flex-direction: column;
+            align-items: center;
             min-height: 100vh;
             text-align: center;
+            backdrop-filter: blur(5px);
         }
 
         header {
             border-radius: 15px;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.7);
             color: #00FFC6;
             padding: 20px;
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 255, 198, 0.5);
+            animation: fadeIn 1s ease-in-out;
         }
 
         header h1 {
             margin: 0;
-            font-size: 32px;
-            font-weight: 600;
+            font-size: 36px;
+            font-weight: 700;
         }
 
-        /* Navigation Bar */
         nav {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
             flex-wrap: wrap;
             margin-top: 15px;
         }
 
-        /* Navigation Text Buttons */
         .nav-box {
             color: white;
             text-decoration: none;
             font-weight: bold;
-            padding: 12px 18px;
-            border-radius: 10px;
+            padding: 12px 20px;
+            border-radius: 12px;
             transition: 0.3s ease-in-out;
             background: rgba(255, 255, 255, 0.2);
-            font-size: 16px;
+            font-size: 18px;
             position: relative;
+            overflow: hidden;
         }
 
-        /* Glowing Effect on Text Only */
+        .nav-box::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: -100%;
+            background: linear-gradient(to right, transparent, #00FFC6, transparent);
+            transition: 0.4s;
+        }
+
         .nav-box:hover {
             color: #00FFC6;
-            text-shadow: 0 0 10px #00FFC6, 0 0 20px #00FFC6;
+            text-shadow: 0 0 15px #00FFC6;
         }
 
-        /* Icon Buttons */
+        .nav-box:hover::before {
+            left: 100%;
+        }
+
         .nav-icon {
             display: inline-flex;
             align-items: center;
@@ -84,32 +99,42 @@
             filter: brightness(2) drop-shadow(0 0 10px #00FFC6);
         }
 
-        /* Main Content */
         main {
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.5);
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.6);
             margin: 20px;
             border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 25px rgba(0, 255, 198, 0.5);
             max-width: 800px;
-            margin: auto;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(8px);
+            animation: slideUp 1s ease-in-out;
         }
 
-        /* Footer */
         footer {
             background: linear-gradient(to right, #00C6FF, #0072FF);
             color: white;
             text-align: center;
-            padding: 10px;
-            position: relative;
-            bottom: 0;
-            margin: 15px;
-            border-radius: 15px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 8px;
+            border-radius: 25px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1.5s ease-in-out;
+            margin-top: auto;
+            width: 90%;
+            max-width: 600px;
+            position: fixed;
+            bottom: 10px;
         }
 
-        /* Mobile Responsive */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
         @media (max-width: 768px) {
             nav {
                 flex-wrap: wrap;
@@ -118,62 +143,33 @@
 
             .nav-box {
                 padding: 10px 15px;
-                font-size: 14px;
-            }
-
-            .nav-icon {
-                width: 45px;
-                height: 45px;
-            }
-
-            .nav-icon img {
-                width: 25px;
-                height: 25px;
-            }
-
-            main {
-                width: 90%;
-                padding: 15px;
-            }
-
-            header h1 {
-                font-size: 28px;
+                font-size: 16px;
             }
         }
     </style>
 </head>
 <body>
-
     <header>
         <h1>Chaudhary Enterprises</h1>
-        <big>Construction Company</big>
+        <big>Building the Future, Today</big>
         <nav>
-            <a href="./index.html" class="nav-box">Home</a>
+            <a href="./index.html" " class="nav-box">Home</a>
             <a href="./index_1.html" class="nav-box">Contact Us</a>
             <a href="./index_2.html" class="nav-box">About Us</a>
-
             <a href="https://whatsapp.com/channel/0029VaTbzQ0GpLHXAs51zO3f" class="nav-icon" target="_blank">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
             </a>
-
             <a href="https://maps.app.goo.gl/iy44yX9nieP2Ge1v7" class="nav-icon" target="_blank">
                 <img src="https://pngimg.com/uploads/google_maps_pin/google_maps_pin_PNG26.png" alt="Location">
             </a>
         </nav>
     </header>
-
     <main>
-        <h2>We shape our buildings, thereafter they shape us.</h2>
-        <section>
-            <article>
-                <p>At Chaudhary Enterprises, we bring your vision to reality with high-quality construction and innovative designs.</p>
-            </article>
-        </section>
+        <h2>We Shape Our Buildings, Thereafter They Shape Us.</h2>
+        <p>At Chaudhary Enterprises, we turn your vision into reality with premium-quality construction and cutting-edge designs.</p>
     </main>
-
     <footer>
         <span>© 2025 CHAUDHARY CONSTRUCTION COMPANY. All Rights Reserved.</span>
     </footer>
-
 </body>
 </html>
